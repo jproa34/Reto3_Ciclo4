@@ -9,6 +9,10 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  * @author Juan pablo Roa Fragozo
  */
 public interface UserCrudRepository extends MongoRepository<User, Integer> {
-    public Optional<User> findByEmail(String email);
-    public Optional<User> findByEmailAndPassword(String email, String password);
+    Optional<User> findByEmail(String email);
+
+    Optional<User> findByEmailAndPassword(String email, String password);
+    
+    //Para seleccionar el usuario con el id maximo
+    Optional<User> findTopByOrderByIdDesc();
 }

@@ -16,27 +16,12 @@ public class UserService {
 
     @Autowired
     private UserRepository repositorio;
-    
-    public Optional<User> getUser(int id) {
-        return repositorio.getUser(id);
-    }
 
     public List<User> listAll() {
         return repositorio.listAll();
-    }
-
-    public boolean emailExists(String email) {
-        return repositorio.emailExists(email);
-    }
-
-    public User autenticateUser(String email, String password) {
-        Optional<User> usuario = repositorio.autenticateUser(email, password);
-
-        if (usuario.isEmpty()) {
-            return new User();
-        } else {
-            return usuario.get();
-        }
+    }  
+    public Optional<User> getUser(int id) {
+        return repositorio.getUser(id);
     }
 
     public User create(User user) {
@@ -93,6 +78,7 @@ public class UserService {
         }
     }
 
+
     public boolean delete(int userId) {
         Optional<User> usuario = getUser(userId);
         
@@ -111,4 +97,25 @@ public class UserService {
 
         */
     }
+
+
+    public boolean emailExists(String email) {
+        return repositorio.emailExists(email);
+    }
+
+    public User autenticateUser(String email, String password) {
+        Optional<User> usuario = repositorio.autenticateUser(email, password);
+
+        if (usuario.isEmpty()) {
+            return new User();
+        } else {
+            return usuario.get();
+        }
+    }
+
+
+
+
+
+
 }

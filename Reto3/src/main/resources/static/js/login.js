@@ -71,10 +71,17 @@ function autenticate(){
     let inputEmail = $("#inputEmail").val();
     let inputPassword = $("#inputPassword").val();
 
+    console.log(inputEmail);
+    console.log("http://localhost:8080/api/user/"+inputEmail+ "/" + inputPassword);
+
+
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
         url: `http://localhost:8080/api/user/${inputEmail}/${inputPassword}`,
+ 
         
+        
+
         // especifica el tipo de petición http: POST, GET, PUT, DELETE
         type: 'GET',
 
@@ -128,10 +135,10 @@ function gestionaResultado(respuesta){
         };
 
         //transforma el objeto javascript a json antes de guardarlo en el sessionStorage
-        let user = JSON.stringify(userJS);
+
 
         //almacena el usuario en el sessionStorage, para hacerlo disponible a las otras páginas
-        sessionStorage.setItem("user",user);
+
 
         location.href="menu.html";
 
@@ -141,3 +148,4 @@ function gestionaResultado(respuesta){
 
     }
 }
+ 
